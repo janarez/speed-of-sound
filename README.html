@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Asciidoctor 1.5.4">
+  <title>Speed of sound prediction</title>
+  <link rel="stylesheet" href="https://asciidoclive.com/assets/asciidoctor.js/css/asciidoctor.css">
+</head>
+
+<body class="article">
+  <div id="header">
+    <h1>Speed of sound prediction</h1>
+  </div>
+  <div id="content">
+    <div id="preamble">
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>This machine learning project predicts the speed of sound in electrolytic
+            aqueous solutions.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_directory_structure">Directory structure</h2>
+      <div class="sectionbody">
+        <div class="ulist">
+          <ul>
+            <li>
+              <p><a href="README.html"><code>README.html</code></a> - file with instructions
+                on experiment running.</p>
+            </li>
+            <li>
+              <p><a href="data"><code>data</code></a> - directory with input CSV files.</p>
+            </li>
+            <li>
+              <p><a href="datasets"><code>datasets</code></a> - directory with preproccesed
+                datasets.</p>
+            </li>
+            <li>
+              <p><a href="notebooks"><code>notebooks</code></a> - directory with Jupyter
+                notebooks.</p>
+            </li>
+            <li>
+              <p><a href="htmls"><code>htmls</code></a> - directory with all notebooks
+                exported as HTML files.</p>
+            </li>
+            <li>
+              <p><a href="environment.yml"><code>environment.yml</code></a> - conda
+                environment file with Python dependencies.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_prerequisities">Prerequisities</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>All dependencies are listed in <a href="environment.yml"><code>environment.yml</code></a>            file.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sect1">
+      <h2 id="_running_the_experiment">Running the experiment</h2>
+      <div class="sectionbody">
+        <div class="paragraph">
+          <p>To run the full experiment, the following notebook order must be maintained.
+            All notebooks are stored in <a href="notebooks"><code>notebooks</code></a>.</p>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 1:</strong> <a href="notebooks/data_loading.ipynb"><code>data_loading.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>loads CSV files from <code>data/</code></p>
+            </li>
+            <li>
+              <p>contains data visualizations</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 2:</strong> <a href="notebooks/features_addition.ipynb"><code>features_addition.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>enhances dataframes loaded in Step 1 with ion specific features</p>
+            </li>
+            <li>
+              <p>scales all the ion specific features</p>
+            </li>
+            <li>
+              <p>concatenates dataframes for all media into one</p>
+            </li>
+            <li>
+              <p>saves the full dataframe as <code>dataset.csv</code> into <code>datasets/</code></p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 3:</strong> <a href="notebooks/baseline_models.ipynb"><code>baseline_models.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>loads <code>dataset.csv</code> created in Step 2</p>
+            </li>
+            <li>
+              <p>normalizes temperature and molality features</p>
+            </li>
+            <li>
+              <p>splits data into train, validation and test sets</p>
+            </li>
+            <li>
+              <p>tests baseline models</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 4:</strong> <a href="notebooks/svm_model.ipynb"><code>svm_model.ipynb</code></a>            and <a href="notebooks/rf_model.ipynb"><code>rf_model.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>performs Bayesian hyperparameter optimization on SVM, respectively
+                random forest model</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 5:</strong> <a href="notebooks/feature_selection.ipynb"><code>feature_selection.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>performs forward and backward feature selection</p>
+            </li>
+            <li>
+              <p>Step 4 can be repeated with new feature sets</p>
+            </li>
+          </ul>
+        </div>
+        <div class="paragraph">
+          <p><strong>Step 6:</strong> <a href="notebooks/model_evaluation.ipynb"><code>model_evaluation.ipynb</code></a></p>
+        </div>
+        <div class="ulist">
+          <ul>
+            <li>
+              <p>evaluates optimized SVM and random forest models on three tests</p>
+              <div class="ulist">
+                <ul>
+                  <li>
+                    <p>general test</p>
+                  </li>
+                  <li>
+                    <p>inside matrix test</p>
+                  </li>
+                  <li>
+                    <p>outside matrix test</p>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
