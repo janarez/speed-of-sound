@@ -6,7 +6,11 @@ Code and text for my 2019 computer science Bachelor thesis at MFF UK in Prague. 
 
 ## Code
 
-The repository contains copy of thesis attachments. Read [`instructions.md`](./instructions.md) for information on repository structure and instructions for running / exploring the contents of the accompanying notebooks. The data directory is empty. However, all data for the experiments can be downloaded from sources listed in the thesis.
+The repository contains copy of thesis attachments. Read [`instructions.md`](./instructions.md) for information on repository structure and instructions for running / exploring the contents of the accompanying notebooks.
+
+Note that the [`htmls`](./htmls/) directory contains exported notebooks including cell results, while the [`notebooks`](./notebooks/) directory contains notebooks in reset state. This is sadly a bit unfortunate for online viewing on GitHub.
+
+The data directory is empty. However, all data for the experiments can be downloaded from sources listed in the thesis.
 
 ## Thesis
 
